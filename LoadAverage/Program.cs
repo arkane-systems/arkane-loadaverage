@@ -1,24 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿#region header
+
+// LoadAverage - Program.cs
+// 
+// Alistair J. R. Young
+// Arkane Systems
+// 
+// Copyright Arkane Systems 2012-2013.  All rights reserved.
+// 
+// Licensed and made available under MS-PL: http://opensource.org/licenses/ms-pl .
+// 
+// Created: 2013-02-05 8:47 AM
+
+#endregion
+
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LoadAverage
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        ///     The main entry point for the application.
         /// </summary>
-        static void Main()
+        private static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[] 
-            { 
-                new LoadAvg() 
-            };
+            var ServicesToRun = new ServiceBase[]
+                {
+                    new LoadAvg()
+                };
             ServiceBase.Run(ServicesToRun);
         }
     }

@@ -5,11 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadAverage", "LoadAverage.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetLoadAverage", "..\GetLoadAverage\GetLoadAverage.csproj", "{B037C4BF-9441-4FE2-BEBD-240FDFA3AE36}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "get-loadaverage", "get-loadaverage", "{4B427B4E-B70D-44A4-9243-A2416A7E6813}"
-	ProjectSection(SolutionItems) = preProject
-		get-loadaverage.ps1 = get-loadaverage.ps1
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
