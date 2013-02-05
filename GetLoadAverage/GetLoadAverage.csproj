@@ -7,7 +7,7 @@
     <ProjectGuid>{B037C4BF-9441-4FE2-BEBD-240FDFA3AE36}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GetLoadAverage</RootNamespace>
+    <RootNamespace>ArkaneSystems.LoadAverage</RootNamespace>
     <AssemblyName>GetLoadAverage</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoadAverage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

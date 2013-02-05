@@ -22,23 +22,21 @@ namespace LoadAverage
 {
     public sealed partial class LoadAvg : ServiceBase
     {
-        private object averageLocker = new object();
-
-        private ManualResetEvent exitNow = new ManualResetEvent(false);
-
         private const double exp1 = 1.0;
         private const double exp5 = 5.0;
         private const double exp15 = 15.0;
+        private readonly object averageLocker = new object();
+
+        private readonly ManualResetEvent exitNow = new ManualResetEvent(false);
+        private Thread calcThread;
 
         private double currentLoadAverage;
 
-        private double oneMinuteLoadAverage;
-        private double fiveMinuteLoadAverage;
         private double fifteenMinuteLoadAverage;
+        private double fiveMinuteLoadAverage;
+        private double oneMinuteLoadAverage;
 
         private PerformanceCounter pqlCount;
-
-        private Thread calcThread;
 
         public LoadAvg()
         {
@@ -51,7 +49,7 @@ namespace LoadAverage
             this.pqlCount = new PerformanceCounter("System", "Processor Queue Length", true);
 
             // Run the calculation thread.
-            this.calcThread = new Thread(new ThreadStart(this.CalculationLoop));
+            this.calcThread = new Thread(this.CalculationLoop);
         }
 
         protected override void OnStop()
@@ -89,7 +87,7 @@ namespace LoadAverage
             {
                 lock (this.averageLocker)
                 {
-                    this.currentLoadAverage = (double) this.pqlCount.NextValue();
+                    this.currentLoadAverage = this.pqlCount.NextValue();
 
                     this.oneMinuteLoadAverage = this.CalculateLoad(this.currentLoadAverage,
                                                                    exp1,
